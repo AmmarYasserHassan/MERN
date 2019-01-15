@@ -155,7 +155,7 @@ let result = sum(2,3) // result = 5 but nothing is shown to the console
 
 ### Functions as Objects
 
-In JS, functions are also considered as objects. Hence, they could be passed as arguments, assigned to a variable and so on.
+In JS, functions could also considered as objects. Hence, they could be passed as arguments, assigned to a variable and so on.
 
 ```javascript
 
@@ -174,8 +174,7 @@ let result = sum(2,3) // result = 5 but nothing is shown to the console
 
 ### Arrow Functions
 
-There is an alternative way to defining functions in JS that was introduced with ES6. It is called arrow functions and they are very widely used in modern JS development.
-
+Arrow functions are an alternative way to defining functions in JS that was introduced with ES6, and it is very widely used in modern JS development.
 
 ```javascript
 
@@ -214,7 +213,24 @@ const loggerAsArrow = () => {
 function takesCB(cb) {
     cb()
 }
-takesCB(logger)
-takesCB(loggerAsFunc)
-takesCB(loggerAsArrow)
+takesCB(logger) // Hello World 1
+takesCB(loggerAsFunc) // Hello World 2
+takesCB(loggerAsArrow) // Hello World 3
 ```
+
+In previous example we have a function `takesCB(cb)` that accepts a callback function as an argument and it simply executes it.
+
+```javascript
+const finish = () => { console.log('Finished work') }
+
+const work = (activity, callback) => {
+    console.log(`I am currently ${activity}`)
+    callback() 
+}
+
+work('drawing', finish) // I am currently drawing
+                        // Finished work
+```
+
+In the last snippet, finish is just a simple function that prints `Finished work` to the console. On the other hand, work is a function that accepts two arguments: `activity`, typically we expect it to be a string and `callback`, typically we expect it to be a function. The last line of code makes a function call with the arguments `'drawing'` and the function `finish`
+
