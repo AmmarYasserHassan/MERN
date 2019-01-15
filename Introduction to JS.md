@@ -82,9 +82,112 @@ let product = x * y // 10
 let power = x ** y // 25
 
 
-let word1 = 'Ammar'
-let word2 = 'Yasser'
+let word1 = 'Software'
+let word2 = 'Engineering'
+let word3 = word1 + word2 // Software Engineering
+```
 
+### Objects
+
+Creating objects in JS is really straight forward. 
+
+```javascript
+
+var employee = {}
 
 ```
 
+This seemingly very simple line of code creates an empty object. But in general objects can hold any number of key-value pairs.
+
+```javascript
+
+var person = {
+    name: 'Tywin',
+    house: 'Lannister',
+    age: 57,
+    hobbies: ['hunting', 'planning to kill other people', 'horse riding'],
+    isMarried: false
+}
+
+```
+
+The above snippet creates an object stored in a variable called person:older_man:. The attributes of the object are name, house, age, hobbies and finally isMarried. The values of these attributes can be of any type as JS is weakly-typed.
+
+### :warning: == vs ===
+
+In most cases JS follows the same conventions as other languages like Java or Python. But, when it comes to the equality comparison `==` JS sometimes behaves in a not-so-traditional manner.
+
+> In JS `===` and `!==` work as you'd expect
+
+> In JS `==` and `!=` work as you'd expect when operands are of the same type. But, if the operands are not of the same type they attempt to coerce the values.
+
+#### Examples of ==:
+
+* ` '' == 0 // false `
+* ` 0 == '' // true `
+* ` 0 == '0' // true `
+* ` false == 'false' // false` 
+* ` false == '0' // true `
+* ` false == undefined // false `
+* ` false == null // false `
+* ` null == undefined // true `
+
+
+
+## :hammer: Functions
+
+Functions play a major role in JS as it supports the functional programming paradigm. Functions are pieces of code that are reusable and they provide a cleaner more modular structure for our code. Functions could return a value or they could return no value, similar to a function of type `void` in Java.
+
+```javascript
+
+function helloWorld() {
+    console.log('Hello, World')
+}
+
+function sum(x,y) {
+    return x+y 
+}
+
+helloWorld() // prints 'Hello, World' to the console
+let result = sum(2,3) // result = 5 but nothing is shown to the console
+
+```
+
+### Functions as Objects
+
+In JS, functions are also considered as objects. Hence, they could be passed as arguments, assigned to a variable and so on.
+
+```javascript
+
+const helloWorld = function () {
+    console.log('Hello, World')
+}
+
+const sum = function(x,y) {
+    return x+y 
+}
+
+helloWorld() // prints 'Hello, World' to the console
+let result = sum(2,3) // result = 5 but nothing is shown to the console
+
+```
+
+### Arrow Functions
+
+There is an alternative way to defining functions in JS that was introduced with ES6. It is called arrow functions and they are very widely used in modern JS development.
+
+
+```javascript
+
+const helloWorld = () => { 
+    console.log('Hello, World')
+}
+
+const sum = (x,y) => { 
+    return x+y
+}
+
+```
+> To create an arrow function simply omit the keyword `function` replace it with `(any number of arguments) =>` 
+
+### Callback functions
