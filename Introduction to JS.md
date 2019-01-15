@@ -191,3 +191,30 @@ const sum = (x,y) => {
 > To create an arrow function simply omit the keyword `function` replace it with `(any number of arguments) =>` 
 
 ### Callback functions
+
+In JS as I previously mentioned, we can pass functions as arguments to other functions and call functions from within functions.
+
+> A function that accepts another function as an argument is called a higher order function
+
+> A function that is passed as an argument to another function is called a callback function
+
+```javascript
+function logger() {
+    console.log('Hello World 1')
+}
+
+const loggerAsFunc = function() {
+    console.log('Hello World 2')
+}
+
+const loggerAsArrow = () => {
+    console.log('Hello World 3')
+}
+
+function takesCB(cb) {
+    cb()
+}
+takesCB(logger)
+takesCB(loggerAsFunc)
+takesCB(loggerAsArrow)
+```
