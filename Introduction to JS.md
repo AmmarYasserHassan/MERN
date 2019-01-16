@@ -301,16 +301,16 @@ In other words a promise is an object that can be returned synchronously from an
 
 A promise has one of three states:
 * Pending
-> A promise always starts as pending
+> A promise always starts as pending, it's outcome is not determined because the operation that will produce its result hasn’t completed yet
 * Fulfilled
-> Promise was settled successfully
+> The producing operation has completed (Promise was settled) and the promise has a value.
 * Rejected 
-> Promise was settled unsuccessfully
+> The producing operation failed, a promise has a reason that indicates why the operation failed.
 
-The two most important promises' functions are `.then()` and `.catch()`, `.then()` contains the code to be executed on success while `.catch()` is executed whenever an error occurs. Promises provide a lot of advantages over traditional callbacks: they're easier to read, maintain and most importantly to deal with errors. Promises can be chained allowing for a number of `.then()`s and then finally having one and only one `.catch()`. Compare that to the callback hell where every callback had to handle any error that might occur within it's scope.
+The two most important promises' functions are `.then()` and `.catch()`, `.then()` contains the code to be executed on success while `.catch()` is executed whenever an error occurs. Promises provide a lot of advantages over traditional callbacks: they're easier to read, maintain and most importantly to deal with errors. Promises can be chained allowing for a number of `.then()`s with just one `.catch()`. Compare that to the callback hell where every callback had to handle any error that might occur within it's scope.
 
 #### Example:
-So assume we want to simulate a real-life scenario where we want to get some data from a remote server, we will use an open source fake [api](https://jsonplaceholder.typicode.com/) for this example. I will use the fetch method
+So assume we want to simulate a real-life scenario where we want to get some data from a remote server, we will use an open source fake [api](https://jsonplaceholder.typicode.com/) for this example. I will use the fetch method. The fetch method is predefined in JS, it accepts a url and then it peforms a request to the specified url.
 
 ```javascript
 let url = 'https://jsonplaceholder.typicode.com/posts'
