@@ -172,7 +172,7 @@ let result = sum(2,3) // result = 5 but nothing is shown to the console
 
 ```
 
-### Arrow Functions
+### :arrow_right: Arrow Functions
 
 Arrow functions are an alternative way to defining functions in JS that was introduced with ES6, and it is very widely used in modern JS development.
 
@@ -189,7 +189,7 @@ const sum = (x,y) => {
 ```
 > To create an arrow function simply omit the keyword `function` replace it with `(any number of arguments) =>` 
 
-### Callback functions
+### :telephone_receiver: Callbacks 
 
 In JS as I previously mentioned, we can pass functions as arguments to other functions and call functions from within functions.
 
@@ -294,7 +294,7 @@ searchBooksByAuthor('Charles Dickens',handleReturnOfBooks)
 ```
 > As you might have expected, handling complex chained queries and errors using callbacks will lead to unreadable hard to maintain code. This is why ES6 introduced [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) and ES7 introduced [Async/Await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function). Nevertheless callbacks as a concept are inseparable from the process of learning JS, for more info consult [Callback Hell](http://callbackhell.com/).
 
-## Promises
+## :exclamation: Promises
 
 > Promises represent the future result of an asynchronous operation
 In other words a promise is an object that can be returned synchronously from an asynchronous function. 
@@ -310,6 +310,7 @@ A promise has one of three states:
 The two most important promises' functions are `.then()` and `.catch()`, `.then()` contains the code to be executed on success while `.catch()` is executed whenever an error occurs. Promises provide a lot of advantages over traditional callbacks: they're easier to read, maintain and most importantly to deal with errors. Promises can be chained allowing for a number of `.then()`s with just one `.catch()`. Compare that to the callback hell where every callback had to handle any error that might occur within it's scope.
 
 #### Example:
+
 So assume we want to simulate a real-life scenario where we want to get some data from a remote server, we will use an open source fake [api](https://jsonplaceholder.typicode.com/) for this example. I will use the fetch method. The fetch method is predefined in JS, it accepts a url and then it peforms a request to the specified url.
 
 ```javascript
@@ -324,4 +325,47 @@ fetch(url) // Function that takes a long time, but instead of passing a callback
 > NOTE: the convention for naming the result of an api request is `res` I used `posts` to be clearer in the example
 > NOTE: :warning: the `.catch()` method should handle an error and return an suitable message to the user, here I just printed a simple statemnet 
 
-## Async/Await
+## :hourglass: Async/Await
+
+Arguably the greatest introduction to JS that came with ES7 is async/await. The most recent way to deal with asynchronous functions, `async/await` is the easiest to understand, read and write.
+
+
+```javascript
+const searchBooksByAuthor = async (bookAuthor) => { 
+    var books = await db.find(bookAuthor) // using keyword 'await' forces the code to wait for this operation to return. This allows us to write much cleaner code
+    return books
+}
+console.log(searchBooksByAuthor('Charles Dickens'))
+// Output --> ['A Tale of Two Cities', 'Great Expectations', 'Oliver Twist']
+```
+
+`async/await` allows us to choose when to block code and control the order of execution in a much simpler manner. Now, the question should be, how to handle errors? and the answer is really simple: the good old `try/catch`.
+
+
+```javascript
+const searchBooksByAuthor = async (bookAuthor) => { 
+    try {
+        var books = await db.find(bookAuthor) 
+        return books
+    }
+    catch(err) {
+    // handle any possible error and exit gracefully 
+    }
+    
+}
+```
+
+## ES6+ Advanced Tips
+
+### Templates
+### Destructuring Objects
+### Destructuring Arrays
+### Object Literal
+### for of
+### Spread Operator
+### Rest Operator
+### Default Params
+### `includes()`
+### `forEach()`
+### `map()`
+### `filter()`
