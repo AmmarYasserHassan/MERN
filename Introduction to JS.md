@@ -3,7 +3,7 @@
 ![JS Logo](https://logonoid.com/images/javascript-logo.png)
 
 ## What is Javascript?
-Javascript (JS) is an interpreted, dynamic, weakly-typed language. It’s always identified as a multi-paradigm language as it supports Object-Oriented, Functional and event-driven programming styles.
+Javascript (JS) is an interpreted, dynamic, weakly-typed single-threaded asynchronous language. It’s always identified as a multi-paradigm language as it supports Object-Oriented, Functional and event-driven programming styles.
 
 ## Why JS?
 One area where JS dominates is the web. For any web page to look and behave the way it does, three elements come into play:
@@ -218,7 +218,7 @@ takesCB(loggerAsFunc) // Hello World 2
 takesCB(loggerAsArrow) // Hello World 3
 ```
 
-In previous example we have a function `takesCB(cb)` that accepts a callback function as an argument and it simply executes it.
+In the previous example we have a function `takesCB(cb)` that accepts a callback function as an argument and it simply executes it.
 
 ```javascript
 const finish = () => { console.log('Finished work') }
@@ -234,3 +234,61 @@ work('drawing', finish) // I am currently drawing
 
 In the last snippet, finish is just a simple function that prints `Finished work` to the console. On the other hand, work is a function that accepts two arguments: `activity`, typically we expect it to be a string and `callback`, typically we expect it to be a function. The last line of code makes a function call with the arguments `'drawing'` and the function `finish`
 
+### Why Callbacks?
+
+Callback functions are essential to JS as it's asynchronous. What this means is that not all functions will be executed in the order they appear unlike most traditional programming languages. 
+
+
+```javascript
+var user = db.getUser() // A function that will take a long time as it will open a connection with the database
+console.log(user) // prints undefined as the value of the variable user is still undefined
+```
+Since JS is single threaded the main event loop does not allow any operations that will take a long time to block the rest of the operations. Hence operations like I/O, API requests and `setTimeout()` will be scheduled on a seprate "Tasks queue" that will run in the background while the main event loop keeps executing commands on the main thread.
+
+> NOTE: :timer_clock: Operations that take a 'long' time, usually take few hundereds milliseconds.
+
+```javascript
+const helloWorld = () => { console.log('Hello World') }
+const takesLongTime = (func) => { setTimeout(func,1000)}
+takesLongTime(helloWorld)
+// We expect this to be printed after Hello World
+// But Hi will be printed first
+console.log('Hi')
+// Output
+// Hi
+// Hello World
+```
+
+In the previous snippet, `helloWorld()` is just a function that prints `'Hello World'`, `takesLongTime()` is a function that accepts one input and then calls the predefined `setTimeout()` with the input and a delay of a 1000 ms. 
+In other words, `takesLongTime()` executes whatever function is passed after 1 second. Hence, the event loop will continue  executing commands on the main thread in order not to block the rest of our code. Consequently the `console.log('Hi')` will be executed first followed by the delayed command.
+
+> Callbacks are a way to ensure that our code is executed in the order that we intend
+
+#### Example:
+We're designing a simple book store application. We want to allow the users to search for books by author. The user enters the author's name and our application searches the backend for all books written by this author. Below are two possible versions that we might implement. Version 1 will not work for the same reason `'Hi'` was printed first in the previous example.
+
+```javascript
+// Version 1
+const searchBooksByAuthor = (bookAuthor) => { 
+    var books = db.find(bookAuthor) // Query the database
+    return books // db.find takes a long time and the variable 'books' does not contain the values we expect
+}
+console.log(searchBooksByAuthor('Charles Dickens'))
+// Output --> undefined
+```
+
+
+```javascript
+// Version 2
+const searchBooksByAuthor = (bookAuthor, cb) => { 
+    db.find(bookAuthor,cb) // Query the database 
+                          // But this time pass a callback function to be executed after the query has returned
+}
+const handleReturnOfBooks = (books) => {
+    console.log('Found books')
+    console.log(books)
+}
+
+searchBooksByAuthor('Charles Dickens',handleReturnOfBooks)
+// Output --> ['A Tale of Two Cities', 'Great Expectations', 'Oliver Twist']
+```
