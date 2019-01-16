@@ -449,7 +449,7 @@ console.log(obj2) // = { firstName: 'Ammar', secondName: 'Yasser' }
 ```
 ### Rest Operator
 
-The rest operator is similar to the spread operator as it allows to 'more easily' handle various input as parameters in a function.
+The rest operator is similar to the spread operator. It 'more easily' handles various inputs as parameters to a function.
 
 ```javascript
 const add1 = (nums) => {
@@ -482,18 +482,75 @@ const sum = (arr = []) => {
     arr.forEach( element => sum+=element)
     console.log(sum)
 }
-sum() // prints out 0
+sum() // prints out 0 instead of an error
 ```
 
 ### `includes()`
+
+Previously if we wanted to check if an element occurs in an array or not we had to use `indexOf()` that returned the index of the element or -1 of it does not exist. Now, we can simply use the boolean method `includes()`.
+
 ```javascript
+let arr = [1,2,3,4]
+console.log( arr.includes(-1)) // false
+console.log( arr.includes(1)) // true
 ```
+
 ### `forEach()`
+
+`forEach()` is an array function that can be used instead of explicit `for` loops. It makes writing code cleaner and easier. `forEach()` accepts 1 input, namely 'element' and does 'something' for every element in the array
+
+> In other words, `forEach()` accepts a function and executes it on every element in the array
+
 ```javascript
+let arr = [1,2,3,4]
+arr.forEach( elm => { console.log(elm) } ) 
+// Output
+// 1
+// 2
+// 3
+// 4
+sum = 0
+arr.forEach( elm => { sum += elm } ) 
+console.log(sum)
+// Output 
+// 10
 ```
+
 ### `map()`
+`map()` is another very useful array function that is heavly used specially in [ReactJS](https://reactjs.org/). Unlike `forEach()` that does not return anything, `map()` returns an array. It executes a given functionality on the input array's elements one by one, appending the result of each operation to a new array.
+
 ```javascript
+let arr = [1,2,3,4]
+var result = arr.map( elm => { return elm*2 } )
+console.log(result) [2,4,9,16]
 ```
+
+> NOTE: the function used within the `map()` method **must** include a return statement 
+
 ### `filter()`
+
+`filter()` performs a certain check on every element inside the input array and appends only those elements passing the check to the result array.
+
 ```javascript
+let binary = [1,0,1,0,1]
+let trueValues = binary.filter( (num) => {
+    return num>0
+})
+console.log(trueValues) // [1,1,1]
 ```
+
+```javascript
+let names = ['Jon','Jaime','Cerci','Dany','Tyrion']
+let namesWithC = names.filter( (name) => {
+    return name.startsWith('C')
+})
+let namesWithJ = names.filter( (name) => {
+    return name.startsWith('J')
+})
+console.log(namesWithC) // [ 'Cerci' ]
+console.log(namesWithJ) // [ 'Jon' , 'Jaime' ]
+
+```
+
+
+> NOTE: the function used within the `filter()` method **must** include a boolean return statement
