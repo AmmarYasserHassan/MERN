@@ -1,4 +1,4 @@
-# Software Engineering and Web Development with the MERN Stack:zap:.
+# Software Engineering and Web Development with the MERN Stack:zap:
 
 ![MERN Logo](https://techsparx.com/nodejs/mern/img/mern-stack-logo.jpg)
 
