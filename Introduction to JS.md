@@ -358,14 +358,142 @@ const searchBooksByAuthor = async (bookAuthor) => {
 ## ES6+ Advanced Tips
 
 ### Templates
+
+```javascript
+let word1 = 'Ammar'
+let word2 = 'Yasser'
+let num1 = 2
+let num2 = 3
+const fullName1 = word1 + ' ' + word2 // The normal way to concatenate two strings 
+const fullName2 = `${word1} ${word2}` // Using templates
+var sum = num1 + num2
+var result1 = 'The sum of ' + num1 + ' and ' + num2 ' is: ' + sum // How you'd usually display the result 
+var result2 = `The sum of ${num1} and ${num2} is: ${num1+num2}` // Much simpler with templates
+console.log(fullName1) // Ammar Yasser
+console.log(fullName2) // Ammar Yasser
+console.log(result1) // The sum of 2 and 3 is: 5
+console.log(result2) // The sum of 2 and 3 is: 5
+```
+
 ### Destructuring Objects
-### Destructuring Arrays
+
+```javascript
+// Assume we have the following object
+const person = {
+    name: 'Jon',
+    house: 'Targaryan',
+    job: 'King in the north',
+    address: 'Winterfell'
+}
+
+//If we want to get the name of the person we might do something like the following
+const name = person.name
+// Same for any other attribute
+const house = person.house // etc..
+
+// Destructuring allows us to do the same in a much simpler cleaner way
+
+const { name, house } = person
+
+```
 ### Object Literal
-### for of
+
+
+```javascript
+
+function nameMaker(code, title) {
+   // return {code:code, title:title}
+   // Both have the same effect as the object key we want to create is the same as the variable name.
+   // return {code,title}
+}
+console.log(nameMaker('CSEN603', 'Software Engineering')) // Creates an object with two attributes code and title
+// Output
+// {
+// code: 'CSEN603'
+// title: 'Software Engineering'
+// }
+
+```
+
+### For of Loop
+
+For of loops allow us to loop over any iterable without indexing.
+
+```javascript
+let numbers = [1,2,3,4]
+sum = 0
+for(const number of numbers)
+    sum+= number
+```
+
+> NOTE: :warning: For of loops are designed to iterate over values not to overwrite them.
+
 ### Spread Operator
+
+The spread operator allows us to get all the 'values' stored in a variable and augment another variables with these values.
+
+```javascript
+let arr1 = [1,2,3,4]
+let arr2 = [...arr1, 5]
+console.log(arr1) // [1,2,3,4]
+console.log(arr2) // [1,2,3,4,5]
+let obj1 = {
+    firstName: 'Ammar'
+}
+let obj2 = {
+    ...obj1,
+    secondName: 'Yasser'
+}
+console.log(obj1) // { firstName: 'Ammar' }
+console.log(obj2) // = { firstName: 'Ammar', secondName: 'Yasser' }
+```
 ### Rest Operator
+
+The rest operator is similar to the spread operator as it allows to 'more easily' handle various input as parameters in a function.
+
+```javascript
+const add1 = (nums) => {
+    console.log(nums)
+}
+add1(1,2,3,4)
+// prints out only 1 because it's expecting only one input
+const add2 = (...nums) => {
+    console.log(nums)
+}
+add2(1,2,3,4)
+// prints out [1,2,3,4] 
+```
+
 ### Default Params
+```javascript
+const sum = (arr) => {
+    sum = 0
+    arr.forEach( element => sum+=element)
+    console.log(sum)
+}
+sum([1,2,3,4])
+// prints out 10
+// But, what if we do not pass an array?
+sum()
+//It throws an error
+// Solution? set a default value for the 'arr' argument
+const sum = (arr = []) => {
+    sum = 0
+    arr.forEach( element => sum+=element)
+    console.log(sum)
+}
+sum() // prints out 0
+```
+
 ### `includes()`
+```javascript
+```
 ### `forEach()`
+```javascript
+```
 ### `map()`
+```javascript
+```
 ### `filter()`
+```javascript
+```
