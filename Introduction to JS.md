@@ -292,3 +292,37 @@ const handleReturnOfBooks = (books) => {
 searchBooksByAuthor('Charles Dickens',handleReturnOfBooks)
 // Output --> ['A Tale of Two Cities', 'Great Expectations', 'Oliver Twist']
 ```
+> As you might have expected, handling complex chained queries and errors using callbacks will lead to unreadable hard to maintain code. This is why ES6 introduced [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) and ES7 introduced [Async/Await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function). Nevertheless callbacks as a concept are inseparable from the process of learning JS, for more info consult [Callback Hell](http://callbackhell.com/).
+
+## Promises
+
+> Promises represent the future result of an asynchronous operation
+In other words a promise is an object that can be returned synchronously from an asynchronous function. 
+
+A promise has one of three states:
+* Pending
+> A promise always starts as pending
+* Fulfilled
+> Promise was settled successfully
+* Rejected 
+> Promise was settled unsuccessfully
+
+The two most important promises' functions are `.then()` and `.catch()`, `.then()` contains the code to be executed on success while `.catch()` is executed whenever an error occurs. Promises provide a lot of advantages over traditional callbacks: they're easier to read, maintain and most importantly to deal with errors. Promises can be chained allowing for a number of `.then()`s and then finally having one and only one `.catch()`. Compare that to the callback hell where every callback had to handle any error that might occur within it's scope.
+
+#### Example:
+So assume we want to simulate a real-life scenario where we want to get some data from a remote server, we will use an open source fake [api](https://jsonplaceholder.typicode.com/) for this example. I will use the fetch method
+
+```javascript
+let url = 'https://jsonplaceholder.typicode.com/posts'
+fetch(url) // Function that takes a long time, but instead of passing a callback for it, it returns a promise.
+    .then(posts => posts.json()) 
+    .then(postsAsJson => console.log(postsAsJson))
+    .catch(err => console.log('Error while getting posts'))
+```
+`.then()` expects a function to be executed when the promise is resolved so we pass a simple function that accepts 1 argument that I called posts as we're expecting posts. Then we're invoking a predefined method `.json()` to the posts to transform it to json format. `.json()` returns a promise as well, hence we will chain promises having another `.then()` with another simple function that accepts 1 argument called `postsAsJson` and it just prints it out to the console. We have a single `.catch()` that will be invoked if any error occurred in either the `.fetch()` the first `.then()` or the second `.then()`.
+
+> NOTE: the convention for naming the result of an api request is `res` I used `posts` to be clearer in the example
+> NOTE: :warning: the `.catch()` method should handle the error and return an suitable message to the user, here I just printed a simple statemnet 
+
+
+## Async/Await
