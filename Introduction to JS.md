@@ -322,7 +322,6 @@ fetch(url) // Function that takes a long time, but instead of passing a callback
 `.then()` expects a function to be executed when the promise is resolved so we pass a simple function that accepts 1 argument that I called posts as we're expecting posts. Then we're invoking a predefined method `.json()` to the posts to transform it to json format. `.json()` returns a promise as well, hence we will chain promises having another `.then()` with another simple function that accepts 1 argument called `postsAsJson` and it just prints it out to the console. We have a single `.catch()` that will be invoked if any error occurred in either the `.fetch()` the first `.then()` or the second `.then()`.
 
 > NOTE: the convention for naming the result of an api request is `res` I used `posts` to be clearer in the example
-> NOTE: :warning: the `.catch()` method should handle the error and return an suitable message to the user, here I just printed a simple statemnet 
-
+> NOTE: :warning: the `.catch()` method should handle an error and return an suitable message to the user, here I just printed a simple statemnet 
 
 ## Async/Await
