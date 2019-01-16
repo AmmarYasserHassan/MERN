@@ -3,7 +3,7 @@
 ![JS Logo](https://logonoid.com/images/javascript-logo.png)
 
 ## What is Javascript?
-Javascript (JS) is an interpreted, dynamic, weakly-typed single-threaded asynchronous language. It’s always identified as a multi-paradigm language as it supports Object-Oriented, Functional and event-driven programming styles.
+Javascript (JS) is an interpreted, dynamic, weakly-typed, single-threaded, asynchronous language. It’s always identified as a multi-paradigm language as it supports Object-Oriented, Functional and event-driven programming styles.
 
 ## Why JS?
 One area where JS dominates is the web. For any web page to look and behave the way it does, three elements come into play:
