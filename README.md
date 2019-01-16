@@ -7,7 +7,7 @@ In this repository I cover the principles of software engineering (SE) as well a
 > This repository is for complete beginners just starting with the web, or junior developers who want a way inside the JS ecosystem.
 
 ### Topics covered: 
-* [Fundamentals of Javascript (JS)](./Introduction to JS.md).
+* Fundamentals of JS.
 * Version control using git.
 * Backend using Node and Express.
 * Database using MongoDB.
