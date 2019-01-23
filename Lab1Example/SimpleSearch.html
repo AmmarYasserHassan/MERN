@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+ </style>
+</head>
+<body>
+    <p id="demo"></p>
+    <h2>Contact List</h2>
+    <input id="myInput" type="text" placeholder="Search.." onkeyup="searchTable()">
+    <button onclick="searchTable()">Search in all</button>
+    <button onclick="searchTableName()">Search by first name</button>
+    <br><br>
+    <table>
+        <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody id="myTable">
+            <tr>
+                <td class="Nn">Gehad</td>
+                <td>Ismail</td>
+                <td>gehad.ismail@guc.edu.eg</td>
+            </tr>
+            <tr>
+                <td class="Nn">Ammar</td>
+                <td>Yasser</td>
+                <td>ammar.abbas@guc.edu.eg</td>
+            </tr>
+            <tr>
+                <td class="Nn">Omar</td>
+                <td>Sherif</td>
+                <td>omar.sherif.fathy.selim@gmail.com</td>
+            </tr>
+            <tr>
+                <td class="Nn">Aysha</td>
+                <td>Alsafty</td>
+                <td>aysha.alsafty@guc.edu.eg</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script>
+        function searchTable() {
+            try {
+                var input, filter, Result, Tbody, SearchRow, SearchCol, val;
+                val = -1;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                Tbody = document.getElementById("myTable");
+                SearchRow = Tbody.getElementsByTagName("tr");
+                for (var i = 0; i < SearchRow.length; i++) {
+                    SearchCol = SearchRow[i].getElementsByTagName("td");
+                    for (var j = 0; j < SearchCol.length; j++) {
+                        if (SearchCol[j].innerHTML.toUpperCase().indexOf(filter) > -1)
+                        {
+                            Result = true;
+                            val = SearchCol[j].innerHTML.toUpperCase().indexOf(filter);
+                        }
+                    }
+                    if (Result) {
+                        SearchRow[i].style.display = "";
+                        Result = false;
+                    }
+
+                    else {
+                        SearchRow[i].style.display = "none";
+                    }
+                }
+            }
+            catch (err) {
+                alert(err.message);
+            }
+        }
+        function searchTableName() {
+            try {
+                var input, filter, Result, Tbody, SearchRow;
+                val = -1;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                Tbody = document.getElementById("myTable");
+                SearchRow = Tbody.getElementsByClassName("Nn");
+                if (filter != "") {
+                    for (var i = 0; i < SearchRow.length; i++) {
+                        if (SearchRow[i].innerHTML.toUpperCase()==filter) {
+                            Result = true;
+                        }
+                    }
+                    if (Result) {
+                        document.getElementById("myTable").style.backgroundColor = "green";
+                        alert("Find an Exact Match!");
+                    }
+                }
+            }
+            catch (err) {
+                alert(err.message);
+            }
+        }
+
+        function isInArray(value, array) {
+            return array.indexOf(value) > -1;
+        }
+    </script>
+
+</body>
+</html>
