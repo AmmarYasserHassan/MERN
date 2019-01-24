@@ -13,7 +13,7 @@ I personally prefer visual studio code, if you like any other code editor go for
 ### Install MongoDb
 1.  Download [community version](https://www.mongodb.com/download-center/community)
 ### Install Express
-1.   `>> npm install express -g`
+1.   `>> npm install -g express`
 
 
 # Mac
@@ -31,7 +31,7 @@ I personally prefer visual studio code, if you like any other code editor go for
 ### Install MongoDb
 1.  Download [community version](https://www.mongodb.com/download-center/community)
 ### Install Express
-1.   `>> npm install express -g`
+1.   `>> sudo npm install -g express`
 
 
 
@@ -50,4 +50,4 @@ I personally prefer visual studio code, if you like any other code editor go for
 ### Install MongoDb
 1.  Download [community version](https://www.mongodb.com/download-center/community)
 ### Install Express
-1.   `>> npm install express -g`
+1.   `>> sudo npm install -g express`
