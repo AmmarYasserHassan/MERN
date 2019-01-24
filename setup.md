@@ -39,8 +39,10 @@ I personally prefer visual studio code, if you like any other code editor go for
 ) which will help you a lot down the road
 3.  download [prettier extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) which will help you formatting your javascript code
 ### Install Node
-1.  write in terminal `>> sudo apt-get install nodejs npm`
-2.  Make sure everything is installed, open cmd and write `>> node --version`
-3.  If this prints ```v10.15.0``` proceed to the next step, else make sure you followed all previous steps
+1.  write in terminal `>> sudo apt install curl`
+2.  write `>> curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -`
+3.  write `>> sudo apt install nodejs`
+4.  Make sure everything is installed, open cmd and write `>> node --version`
+5.  If this prints ```v10.15.0``` proceed to the next step, else make sure you followed all previous steps
 ### Install Express
 1.   `>> sudo npm install -g express`
