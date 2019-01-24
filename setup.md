@@ -32,6 +32,8 @@ I personally prefer visual studio code, if you like any other code editor go for
 1.  Download [community version](https://www.mongodb.com/download-center/community)
 ### Install Express
 1.   `>> sudo npm install -g express`
+2.  `Just a 'nota bene', if you ever get an error while trying to install a node package using npm and the error tells you there is some sort of access error, this means you have to write 'sudo' before 'npm install' to give npm the right to execute with security privileges of the user`
+3.  In this case write `>> sudo npm install -g express` instead of `>> npm install -g express` 
 
 
 
@@ -51,3 +53,5 @@ I personally prefer visual studio code, if you like any other code editor go for
 1.  Download [community version](https://www.mongodb.com/download-center/community)
 ### Install Express
 1.   `>> sudo npm install -g express`
+2.  `Just a 'nota bene', if you ever get an error while trying to install a node package using npm and the error tells you there is some sort of access error, this means you have to write 'sudo' before 'npm install' to give npm the right to execute with security privileges of the user`
+3.  In this case write `>> sudo npm install -g express` instead of `>> npm install -g express`
