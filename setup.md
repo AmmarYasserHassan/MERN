@@ -10,8 +10,6 @@ I personally prefer visual studio code, if you like any other code editor go for
 2.  install it, a standard installation is sufficient just keep pressing next
 3.  Make sure everything is installed, open cmd and write `>> node --version`
 4.  If this prints ```v10.15.0``` proceed to the next step, else make sure you followed all previous steps
-### Install MongoDb
-1.  Download [community version](https://www.mongodb.com/download-center/community)
 ### Install Express
 1.   `>> npm install -g express`
 
@@ -28,8 +26,6 @@ I personally prefer visual studio code, if you like any other code editor go for
 2.  install it, a standard installation is sufficient just keep pressing next
 3.  Make sure everything is installed, open cmd and write `>> node --version`
 4.  If this prints ```v10.15.0``` proceed to the next step, else make sure you followed all previous steps
-### Install MongoDb
-1.  Download [community version](https://www.mongodb.com/download-center/community)
 ### Install Express
 1.   `>> sudo npm install -g express`
 
@@ -43,11 +39,10 @@ I personally prefer visual studio code, if you like any other code editor go for
 ) which will help you a lot down the road
 3.  download [prettier extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) which will help you formatting your javascript code
 ### Install Node
-1.  download [nodejs v10.15.0 LTS](https://nodejs.org/en/)
-2.  install it, a standard installation is sufficient just keep pressing next
-3.  Make sure everything is installed, open cmd and write `>> node --version`
-4.  If this prints ```v10.15.0``` proceed to the next step, else make sure you followed all previous steps
-### Install MongoDb
-1.  Download [community version](https://www.mongodb.com/download-center/community)
+1.  write in terminal `>> sudo apt install curl`
+2.  write `>> curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -`
+3.  write `>> sudo apt install nodejs`
+4.  Make sure everything is installed, open cmd and write `>> node --version`
+5.  If this prints ```v10.15.0``` proceed to the next step, else make sure you followed all previous steps
 ### Install Express
 1.   `>> sudo npm install -g express`
